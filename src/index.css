@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #05070d;
+  --color-navy-900: #080b14;
+  --color-navy-800: #0d1220;
+  --color-navy-700: #131a2c;
+  --color-cyan-glow: #22d3ee;
+  --color-violet-glow: #7c5cfc;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-navy-950);
+  color: #e9ebf7;
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-violet-glow);
+  color: #fff;
+}
+
+/* Glassmorphism card base */
+.glass {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, var(--color-violet-glow), var(--color-cyan-glow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(120deg, var(--color-violet-glow), var(--color-cyan-glow));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-navy-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-700);
+  border-radius: 10px;
+}
+
+/* Syntax highlighter code blocks */
+pre {
+  border-radius: 12px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 13.5px !important;
+}
+
+.prose-custom h1, .prose-custom h2, .prose-custom h3 {
+  font-family: var(--font-display);
+  color: #f4f5fb;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  font-weight: 700;
+}
+.prose-custom p {
+  color: #b8beda;
+  margin-bottom: 1.1em;
+  line-height: 1.75;
+}
+.prose-custom a {
+  color: var(--color-cyan-glow);
+}
+.prose-custom ul, .prose-custom ol {
+  color: #b8beda;
+  margin-bottom: 1.1em;
+  padding-left: 1.4em;
+}
+.prose-custom li {
+  margin-bottom: 0.4em;
+}
+.prose-custom code {
+  background: rgba(124,92,252,0.12);
+  color: #d6d0ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.prose-custom blockquote {
+  border-left: 3px solid var(--color-violet-glow);
+  padding-left: 1em;
+  color: #9aa1c0;
+  font-style: italic;
+  margin-bottom: 1.1em;
+}

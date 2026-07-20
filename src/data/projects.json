@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "smart-honeypot-system",
+    "title": "Smart Honeypot System for Analyzing Zero-Day Attacks",
+    "shortDesc": "A honeypot simulating SSH, FTP, HTTP, Telnet and SMB services to capture and analyze attacker behavior in real time.",
+    "tech": [
+      "Python",
+      "Django",
+      "Django Channels",
+      "WebSockets",
+      "Redis",
+      "SQLite",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "github": "https://github.com/RaviDahiya0001/Smart-Honeypot-System-for-Analyzing-Zero-Day-Attacks-",
+    "demo": "",
+    "heroImage": "/projects/smart-honeypot/hero.png",
+    "screenshots": [
+      "/projects/smart-honeypot/Admin Login.png",
+      "/projects/smart-honeypot/Admin Dashboard.png",
+      "/projects/smart-honeypot/Dashboard part 2.png",
+      "/projects/smart-honeypot/Dashboard part 3.png",
+      "/projects/smart-honeypot/Attacks page.png",
+      "/projects/smart-honeypot/Alerts Page.png",
+      "/projects/smart-honeypot/Attackers.png",
+      "/projects/smart-honeypot/Reports.png"
+    ],
+    "features": [
+      "Simulates SSH, FTP, HTTP, Telnet and SMB services to capture attacker activity",
+      "Real-time dashboard for monitoring attacks, protocols, and threat statistics",
+      "IP reputation analysis, anomaly detection, and GeoIP tracking",
+      "Automated threat scoring",
+      "Generates security reports in CSV, JSON and PDF formats"
+    ],
+    "challenges": "Building a real-time dashboard that could reflect live attacker sessions without blocking the honeypot services required moving event delivery onto WebSockets via Django Channels backed by Redis as the channel layer.",
+    "learnings": "Gained hands-on experience with asynchronous Python (Django Channels), designing services that intentionally expose themselves as attack surfaces, and turning raw connection logs into structured threat intelligence.",
+    "futureImprovements": "Add more emulated services, integrate a real threat-intel feed for IP reputation, and containerize the system with Docker for easier deployment."
+  },
+  {
+    "slug": "pdf-malware-analysis-toolkit",
+    "title": "PDF Malware Analysis Toolkit",
+    "shortDesc": "A static analysis toolkit that inspects PDF files for embedded threats, malicious JavaScript, and indicators of compromise.",
+    "tech": [
+      "Python",
+      "PDFiD",
+      "pdf-parser.py",
+      "peepdf",
+      "YARA",
+      "SQLite"
+    ],
+    "github": "https://github.com/RaviDahiya0001/CyberSecurity-Internship-Projects/tree/main/pdf-malware-analysis",
+    "demo": "",
+    "features": [
+      "Static PDF malware analysis using PDFiD and peepdf",
+      "Extracts metadata, embedded JavaScript, and embedded objects",
+      "Identifies Indicators of Compromise (IOCs)",
+      "Generates automated risk scores",
+      "Produces structured malware analysis reports"
+    ],
+    "challenges": "PDF files can hide malicious content across nested objects and obfuscated JavaScript streams, so correctly parsing the object structure without executing anything was the core challenge.",
+    "learnings": "Learned how PDF malware typically hides payloads (auto-actions, embedded JS, obfuscated streams) and how to build a scoring system that reflects real risk rather than just flagging keywords.",
+    "futureImprovements": "Integrate YARA rule updates automatically and add a sandboxed dynamic analysis mode for deeper inspection."
+  },
+  {
+    "slug": "process-monitor-agent",
+    "title": "Process Monitor Agent",
+    "shortDesc": "A lightweight Windows agent that watches running processes, flags suspicious behavior, and raises real-time alerts.",
+    "tech": [
+      "Python",
+      "psutil",
+      "Windows",
+      "Logging"
+    ],
+    "github": "https://github.com/RaviDahiya0001/CyberSecurity-Internship-Projects/tree/main/Process-Monitor-Agent",
+    "demo": "",
+    "features": [
+      "Continuous Windows process monitoring using psutil",
+      "Detects suspicious process behavior",
+      "Structured activity logging",
+      "Real-time alerts for endpoint monitoring"
+    ],
+    "challenges": "Distinguishing genuinely suspicious process behavior from normal system noise required tuning detection heuristics to keep false positives low.",
+    "learnings": "Built a practical understanding of endpoint monitoring fundamentals and how SOC tooling turns raw OS-level signals into actionable alerts.",
+    "futureImprovements": "Add a central logging endpoint so multiple agents can report to one dashboard, and expand detection heuristics."
+  }
+]

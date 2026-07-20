@@ -1,0 +1,17 @@
+[
+  {
+    "icon": "star",
+    "title": "Top 1% on TryHackMe",
+    "text": "Ranked in the Top 1% on TryHackMe with 134+ completed labs and 13 badges."
+  },
+  {
+    "icon": "check",
+    "title": "Internship Completed with LOR",
+    "text": "Successfully completed a 6-month Cybersecurity Internship and received a Letter of Recommendation."
+  },
+  {
+    "icon": "tool",
+    "title": "Built Multiple Security Tools",
+    "text": "Developed multiple Python-based cybersecurity tools for malware analysis, threat detection, and system monitoring."
+  }
+]
