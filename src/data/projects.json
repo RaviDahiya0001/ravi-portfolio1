@@ -27,6 +27,7 @@
       "/projects/smart-honeypot/Attackers.png",
       "/projects/smart-honeypot/Reports.png"
     ],
+    "architectureImage": "/projects/smart-honeypot/architecture.png",
     "features": [
       "Simulates SSH, FTP, HTTP, Telnet and SMB services to capture attacker activity",
       "Real-time dashboard for monitoring attacks, protocols, and threat statistics",

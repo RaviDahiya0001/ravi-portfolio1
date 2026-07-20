@@ -102,9 +102,15 @@ export default function ProjectDetail() {
       <section className="py-16 border-b border-white/[0.08]">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="font-display font-bold text-2xl mb-6">Architecture</h2>
-          <div className="h-56 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center">
-            <span className="font-mono text-white/25 text-xs">[ Architecture diagram placeholder ]</span>
-          </div>
+          {project.architectureImage ? (
+            <div className="rounded-xl overflow-hidden border border-white/[0.08]">
+              <img src={project.architectureImage} alt={`${project.title} architecture diagram`} className="w-full h-auto" />
+            </div>
+          ) : (
+            <div className="h-56 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center">
+              <span className="font-mono text-white/25 text-xs">[ Architecture diagram placeholder ]</span>
+            </div>
+          )}
         </div>
       </section>
 
