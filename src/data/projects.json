@@ -166,7 +166,8 @@
     ],
     "challenges": "The email had no attachment, malware, or malicious link — the entire investigation rested on domain comparison and header analysis rather than any technical artifact to detonate or scan.",
     "learnings": "SPF/DKIM/DMARC only prove a message came from the domain it claims — not that the domain has any relationship with the organization. This is exactly why lookalike-domain BEC routinely passes all three checks.",
-    "futureImprovements": "Practice the same workflow against a sample using domain homoglyphs (e.g. rn vs m) to sharpen visual domain-comparison skills."
+    "futureImprovements": "Practice the same workflow against a sample using domain homoglyphs (e.g. rn vs m) to sharpen visual domain-comparison skills.",
+    "architectureImage": "/projects/bec-phishing-investigation/architecture.png"
   },
   {
     "slug": "wazuh-siem-failed-login",
@@ -198,7 +199,8 @@
     ],
     "challenges": "Getting the Wazuh VM and Windows host to communicate required configuring a bridged network adapter so both machines could reach each other on the local network, and waiting through the appliance's multi-minute dashboard initialization.",
     "learnings": "A SIEM's core value is correlation speed — a single filtered search surfaced count, timing and MITRE ATT&CK context instantly. But the SIEM never makes the judgment call: the same alert wording can mean something routine or something serious depending on source, volume and account context.",
-    "futureImprovements": "Add a second monitored endpoint to practice distinguishing single-host failed logins from a pattern spread across multiple machines (a stronger brute-force indicator)."
+    "futureImprovements": "Add a second monitored endpoint to practice distinguishing single-host failed logins from a pattern spread across multiple machines (a stronger brute-force indicator).",
+    "architectureImage": "/projects/wazuh-siem-failed-login/architecture.png"
   },
   {
     "slug": "defender-eicar-triage",
@@ -229,6 +231,7 @@
     ],
     "challenges": "The first EICAR test was run before the Defender eventchannel config change and agent restart, so Wazuh never received it — Wazuh only forwards events generated after it starts monitoring a log source, not historical backfill. Re-running the test after the config change resolved it.",
     "learnings": "A config with no errors doesn't guarantee data is flowing — confirming an event actually arrived in the SIEM is itself part of the verification work, not just writing a config block correctly.",
-    "futureImprovements": "Configure a Wazuh active response to automatically isolate a host on a high-severity Defender detection, and document the resulting workflow."
+    "futureImprovements": "Configure a Wazuh active response to automatically isolate a host on a high-severity Defender detection, and document the resulting workflow.",
+    "architectureImage": "/projects/defender-eicar-triage/architecture.png"
   }
 ]
