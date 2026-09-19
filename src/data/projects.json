@@ -85,5 +85,150 @@
     "challenges": "Distinguishing genuinely suspicious process behavior from normal system noise required tuning detection heuristics to keep false positives low.",
     "learnings": "Built a practical understanding of endpoint monitoring fundamentals and how SOC tooling turns raw OS-level signals into actionable alerts.",
     "futureImprovements": "Add a central logging endpoint so multiple agents can report to one dashboard, and expand detection heuristics."
+  },
+  {
+    "slug": "wireshark-web-connection",
+    "title": "Following a Web Connection with Wireshark",
+    "shortDesc": "Traced a browser connection end-to-end using packet evidence: DNS resolution, TCP handshake, and TLS Client Hello (SNI).",
+    "tech": [
+      "Wireshark",
+      "DNS",
+      "TCP/IP",
+      "TLS",
+      "QUIC/HTTP3"
+    ],
+    "github": "https://github.com/RaviDahiya0001/soc-portfolio-project1-wireshark",
+    "demo": "",
+    "heroImage": "/projects/wireshark-web-connection/web-connection-tcp-tls.png",
+    "screenshots": [
+      "/projects/wireshark-web-connection/dns-query-response.png",
+      "/projects/wireshark-web-connection/web-connection-tcp-tls.png"
+    ],
+    "features": [
+      "Captured and filtered live traffic to isolate a single web connection from background noise",
+      "Correlated a DNS query/response with the resulting TCP handshake and TLS session to the same IP",
+      "Identified the TLS Client Hello's SNI field as evidence of intended destination despite encryption",
+      "Observed QUIC (HTTP/3) traffic alongside fallback TCP/TLS, reflecting modern browser behavior"
+    ],
+    "challenges": "Isolating one connection's traffic from a mix of background browser activity (telemetry, other domains) required building increasingly specific display filters, starting from a broad DNS query filter down to an exact IP match.",
+    "learnings": "Learned to reconstruct what a system connected to using only network metadata (DNS records, TCP handshake, SNI) — the same class of evidence available even when payloads are encrypted, and foundational to spotting abnormal connections later.",
+    "futureImprovements": "Extend the exercise to a suspicious/malicious PCAP sample to practice distinguishing normal baseline traffic from an anomalous connection."
+  },
+  {
+    "slug": "sysmon-process-investigation",
+    "title": "Investigating Windows Processes with Sysmon",
+    "shortDesc": "Installed Sysmon and used Event ID 1 (Process Create) telemetry to reconstruct what ran, who ran it, and what launched it.",
+    "tech": [
+      "Sysmon",
+      "Windows Event Viewer",
+      "Windows Security Logs"
+    ],
+    "github": "https://github.com/RaviDahiya0001/soc-portfolio-project2-sysmon",
+    "demo": "",
+    "heroImage": "/projects/sysmon-process-investigation/notepad-event.png",
+    "screenshots": [
+      "/projects/sysmon-process-investigation/notepad-event.png",
+      "/projects/sysmon-process-investigation/whoami-event.png"
+    ],
+    "features": [
+      "Installed Sysmon with default configuration to capture process-creation telemetry",
+      "Generated and located known-good baseline events (Notepad, whoami via PowerShell) in Event Viewer",
+      "Analyzed Image, CommandLine, User, ParentImage and timestamp fields for each event",
+      "Explained why parent-child process relationships (e.g. PowerShell spawned from explorer.exe vs. from Word) are a key triage signal"
+    ],
+    "challenges": "With 170+ events generated during a normal session, finding the exact events tied to deliberately generated activity required using Event Viewer's Find function rather than manually scrolling.",
+    "learnings": "Sysmon doesn't decide what's malicious — it records evidence. The same alert (e.g. 'powershell.exe executed') can be completely routine or highly suspicious depending on the process's command line, parent process, and user context.",
+    "futureImprovements": "Build a small set of custom Sysmon rules to reduce noise and highlight only high-signal parent-child relationships (e.g. Office apps spawning shells)."
+  },
+  {
+    "slug": "bec-phishing-investigation",
+    "title": "The Urgent Materials Payment — BEC Investigation",
+    "shortDesc": "Investigated a business email compromise attempt: a lookalike-domain vendor impersonation requesting an urgent $18,740 payment.",
+    "tech": [
+      "Mozilla Thunderbird",
+      "Email Headers",
+      "SPF/DKIM/DMARC",
+      "SHA-256"
+    ],
+    "github": "https://github.com/RaviDahiya0001/soc-portfolio-project3-phishing-bec",
+    "demo": "",
+    "heroImage": "/projects/bec-phishing-investigation/rendered-email.png",
+    "screenshots": [
+      "/projects/bec-phishing-investigation/rendered-email.png",
+      "/projects/bec-phishing-investigation/raw-headers-source.png"
+    ],
+    "features": [
+      "Verified case file integrity via SHA-256 hash before analysis",
+      "Compared sender and Reply-To domains against the approved vendor domain on file",
+      "Identified a lookalike sending domain and a third, different Reply-To domain",
+      "Explained why SPF/DKIM/DMARC all passing does not clear a lookalike-domain BEC attempt",
+      "Documented social-engineering indicators: urgency and discouraged verification"
+    ],
+    "challenges": "The email had no attachment, malware, or malicious link — the entire investigation rested on domain comparison and header analysis rather than any technical artifact to detonate or scan.",
+    "learnings": "SPF/DKIM/DMARC only prove a message came from the domain it claims — not that the domain has any relationship with the organization. This is exactly why lookalike-domain BEC routinely passes all three checks.",
+    "futureImprovements": "Practice the same workflow against a sample using domain homoglyphs (e.g. rn vs m) to sharpen visual domain-comparison skills."
+  },
+  {
+    "slug": "wazuh-siem-failed-login",
+    "title": "The Failed Login Alert — First SIEM Investigation with Wazuh",
+    "shortDesc": "Deployed Wazuh SIEM, connected an endpoint agent, and investigated a controlled failed-then-successful login sequence.",
+    "tech": [
+      "Wazuh",
+      "SIEM",
+      "VMware Workstation",
+      "Windows Security Logs",
+      "PowerShell"
+    ],
+    "github": "https://github.com/RaviDahiya0001/soc-portfolio-project4-wazuh-siem",
+    "demo": "",
+    "heroImage": "/projects/wazuh-siem-failed-login/wazuh-dashboard-4625-summary.png",
+    "screenshots": [
+      "/projects/wazuh-siem-failed-login/agent-active.png",
+      "/projects/wazuh-siem-failed-login/wazuh-dashboard-4625-summary.png",
+      "/projects/wazuh-siem-failed-login/4625-events-list.png",
+      "/projects/wazuh-siem-failed-login/4625-event-detail.png",
+      "/projects/wazuh-siem-failed-login/4624-successful-login.png"
+    ],
+    "features": [
+      "Deployed the official Wazuh virtual appliance and networked it with a Windows endpoint",
+      "Installed and verified an active Wazuh agent on the monitored endpoint",
+      "Generated a controlled failed->failed->failed->successful authentication sequence",
+      "Correlated Event ID 4625 (failed logon) and 4624 (successful logon) into a timeline",
+      "Wrote a Tier 1 case note with a false-positive disposition and escalation criteria"
+    ],
+    "challenges": "Getting the Wazuh VM and Windows host to communicate required configuring a bridged network adapter so both machines could reach each other on the local network, and waiting through the appliance's multi-minute dashboard initialization.",
+    "learnings": "A SIEM's core value is correlation speed — a single filtered search surfaced count, timing and MITRE ATT&CK context instantly. But the SIEM never makes the judgment call: the same alert wording can mean something routine or something serious depending on source, volume and account context.",
+    "futureImprovements": "Add a second monitored endpoint to practice distinguishing single-host failed logins from a pattern spread across multiple machines (a stronger brute-force indicator)."
+  },
+  {
+    "slug": "defender-eicar-triage",
+    "title": "Defender Found Something — Endpoint Alert Triage",
+    "shortDesc": "Triaged an EICAR test-file detection end-to-end: Microsoft Defender's response, Windows Event Viewer, and Wazuh SIEM correlation.",
+    "tech": [
+      "Microsoft Defender",
+      "Wazuh",
+      "Windows Event Viewer",
+      "SIEM Correlation"
+    ],
+    "github": "https://github.com/RaviDahiya0001/soc-portfolio-project5-defender-siem",
+    "demo": "",
+    "heroImage": "/projects/defender-eicar-triage/defender-threat-found.png",
+    "screenshots": [
+      "/projects/defender-eicar-triage/defender-threat-found.png",
+      "/projects/defender-eicar-triage/defender-quarantined.png",
+      "/projects/defender-eicar-triage/eventviewer-1116-detection.png",
+      "/projects/defender-eicar-triage/eventviewer-1117-action.png",
+      "/projects/defender-eicar-triage/wazuh-1116-correlated.png"
+    ],
+    "features": [
+      "Configured the Wazuh agent to forward Windows Defender's Operational event log via a custom eventchannel block",
+      "Generated a real Defender detection using the industry-standard EICAR test file",
+      "Verified Defender's automated Quarantine action via Event ID 1116/1117 in Event Viewer",
+      "Correlated the exact same detection independently in Wazuh (Rule 62123, Level 12)",
+      "Wrote a full incident record plus an optional Tier 2 escalation handoff"
+    ],
+    "challenges": "The first EICAR test was run before the Defender eventchannel config change and agent restart, so Wazuh never received it — Wazuh only forwards events generated after it starts monitoring a log source, not historical backfill. Re-running the test after the config change resolved it.",
+    "learnings": "A config with no errors doesn't guarantee data is flowing — confirming an event actually arrived in the SIEM is itself part of the verification work, not just writing a config block correctly.",
+    "futureImprovements": "Configure a Wazuh active response to automatically isolate a host on a high-severity Defender detection, and document the resulting workflow."
   }
 ]
