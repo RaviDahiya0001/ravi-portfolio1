@@ -1,0 +1,29 @@
+{
+  "Security": [
+    "Network Security",
+    "Vulnerability Assessment",
+    "Malware Analysis",
+    "Threat Detection",
+    "Security Monitoring"
+  ],
+  "Tools": [
+    "Nmap",
+    "Wireshark",
+    "Burp Suite",
+    "Metasploit"
+  ],
+  "Networking": [
+    "TCP/IP",
+    "DNS",
+    "HTTP",
+    "OSI Model"
+  ],
+  "Programming": [
+    "Python"
+  ],
+  "Operating Systems": [
+    "Kali Linux",
+    "Ubuntu",
+    "Windows"
+  ]
+}

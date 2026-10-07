@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Junior Cybersecurity Analyst",
+    "issuer": "Cisco Networking Academy",
+    "date": "",
+    "file": "/certifications/junior-cybersecurity-analyst.pdf"
+  },
+  {
+    "name": "Ethical Hacker",
+    "issuer": "Cisco Networking Academy",
+    "date": "",
+    "file": "/certifications/ethical-hacker.pdf"
+  },
+  {
+    "name": "Cyber Threat Management",
+    "issuer": "Cisco Networking Academy",
+    "date": "",
+    "file": "/certifications/cyber-threat-management.pdf"
+  },
+  {
+    "name": "Endpoint Security",
+    "issuer": "Cisco Networking Academy",
+    "date": "",
+    "file": "/certifications/endpoint-security.pdf"
+  },
+  {
+    "name": "Cybersecurity Job Simulation",
+    "issuer": "Forage",
+    "date": "",
+    "file": "/certifications/cybersecurity-job-simulation.pdf"
+  }
+]
